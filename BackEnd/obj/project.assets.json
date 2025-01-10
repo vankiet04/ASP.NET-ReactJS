@@ -11625,11 +11625,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kiet\\Desktop\\ASP.NET - ReactJS\\BackEnd\\AccountApplication.csproj",
+      "projectUniqueName": "C:\\Users\\Kiet\\Desktop\\ASP.NET-ReactJS\\BackEnd\\AccountApplication.csproj",
       "projectName": "AccountApplication",
-      "projectPath": "C:\\Users\\Kiet\\Desktop\\ASP.NET - ReactJS\\BackEnd\\AccountApplication.csproj",
+      "projectPath": "C:\\Users\\Kiet\\Desktop\\ASP.NET-ReactJS\\BackEnd\\AccountApplication.csproj",
       "packagesPath": "C:\\Users\\Kiet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kiet\\Desktop\\ASP.NET - ReactJS\\BackEnd\\obj\\",
+      "outputPath": "C:\\Users\\Kiet\\Desktop\\ASP.NET-ReactJS\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Kiet\\AppData\\Roaming\\NuGet\\NuGet.Config"
