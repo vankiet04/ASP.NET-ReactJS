@@ -1,33 +1,53 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
+  ],
   theme: {
     extend: {
-      maxWidth: {
-        container: "1440px",
-      },
-      screens: {
-        xs: "320px",
-        sm: "375px",
-        sml: "500px",
-        md: "667px",
-        mdl: "768px",
-        lg: "960px",
-        lgl: "1024px",
-        xl: "1280px",
-      },
-      fontFamily: {
-        bodyFont: ["DM Sans", "sans-serif"],
-        titleFont: ["Poppins", "sans-serif"],
-      },
-      colors: {
-        primeColor: "#262626",
-        lightText: "#6D6D6D",
+      backgroundImage: {
+        history: "url('/public/assets/images/cold-brew.webp')",
+        main: "url('/public/assets/images/bg-main-coffee.webp')",
+        profile: "url('/public/assets/images/bg-profile.webp')",
+        cart: "url('/public/assets/images/bg-cart.webp')",
       },
       boxShadow: {
-        testShadow: "0px 0px 54px -13px rgba(0,0,0,0.7)",
+        primary: "0px 6px 20px 0px #00000020;",
+      },
+      spacing: {
+        22: "7rem",
+      },
+      colors: {
+        primary: "#4F5665",
+        "primary-context": "#7C828A",
+        secondary: "#ffba33",
+        "secondary-200": "#f4a200",
+        tertiary: "#6A4029",
+        quartenary: "#0b132a",
+      },
+      borderWidth: {
+        1: "1px",
       },
     },
   },
-  plugins: [require("tailwind-scrollbar")],
+  daisyui: {
+    themes: [
+      {
+        jokopi: {
+          primary: "#6A4029",
+          secondary: "#ffba33",
+          accent: "#0b132a",
+          neutral: "#9f9f9f",
+          "base-100": "#fff",
+          info: "#3ABFF8",
+          success: "#36D399",
+          warning: "#FBBD23",
+          error: "#F87272",
+          "plain-white": "#FFF",
+        },
+      },
+    ],
+  },
+  plugins: [require("daisyui")],
 };

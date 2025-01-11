@@ -1,33 +1,36 @@
-import { configureStore } from "@reduxjs/toolkit";
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import orebiReducer from "./orebiSlice";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+
+import { configureStore } from "@reduxjs/toolkit";
+
+import reducer from "./slices";
 
 const persistConfig = {
-  key: "root",
-  version: 1,
+  key: "jokopi_appdata",
   storage,
+  blacklist: ["context"],
 };
 
-const persistedReducer = persistReducer(persistConfig, orebiReducer);
+const persistedReducer = persistReducer(persistConfig, reducer);
 
-export const store = configureStore({
-  reducer: { orebiReducer: persistedReducer },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (defaultMiddleware) => {
+    return defaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoreActions: [PERSIST, FLUSH, REHYDRATE, PAUSE, REGISTER, PURGE],
       },
-    }),
+    });
+  },
 });
-
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);
+export default store;

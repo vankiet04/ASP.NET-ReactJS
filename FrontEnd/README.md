@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+<div align="center">
+<img src="./public/assets/images/logo.png"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Tech Stack](https://skillicons.dev/icons?i=react,redux,tailwind,vercel)](#tech-stack)
 
-## Available Scripts
+<h3 align="center"><b>jokopi</b> - Example App</h3>
+   <p align="center">
+   Open Source. Front-end.
+   </p>
 
-In the project directory, you can run:
+[Demo](https://jokopi-react.vercel.app/) · [Related Projects](#related-projects) · [Request Feature](#report-bug)
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Overview](#overview)
+  - [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Screenshots](#screenshots)
+- [Resources](#resources)
+- [Related Projects](#related-projects)
+- [License](#license)
+- [Report Bug](#report-bug)
 
-### `npm test`
+## Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+jokopi is a complete open-source app coffee shop ordering.
 
-### `npm run build`
+This is an example application that shows how `jokopi` is applied to a react app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Build using create react app.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can build it by yourself
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Features
 
-### `npm run eject`
+- Login, Register, Forgot Password, Logout
+- Profile
+- History Order
+- Products (Search, Sort, Filter)
+- Cart
+- Transactions
+- Admin Dashboard
+- Manage Order (Admin)
+- etc.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React](https://react.dev/) & [React Router DOM](https://reactrouter.com/en/main)
+- [Redux](https://redux.js.org/) & [Redux Persist](https://www.npmjs.com/package/redux-persist) (Local Storage)
+- [TailwindCSS](https://tailwindcss.com/) & [DaisyUI](https://daisyui.com/)
+- [React Hot Toast](https://www.npmjs.com/package/react-hot-toast)
+- [Vercel](https://vercel.com/dashboard) for deploying demo
+- etc.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+You need to install some software to run this project
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [Node.js](https://nodejs.org/en/download) (LTS version recommended, 14 or newer)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Installation
 
-### Code Splitting
+1. Clone this repository to your local
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```bash
+   git clone https://github.com/nyannss/jokopi-react.git
+   ```
 
-### Analyzing the Bundle Size
+2. Change current directory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```bash
+   cd jokopi-react
+   ```
 
-### Making a Progressive Web App
+3. Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   If you using npm
 
-### Advanced Configuration
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   If you using yarn
 
-### Deployment
+   ```bash
+   yarn
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+4. Setup environment
 
-### `npm run build` fails to minify
+   ```env
+   REACT_APP_BACKEND_HOST = (your rest api host)
+   REACT_APP_WEBSITE_NAME = (your project name)
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Running app
+
+   ```bash
+   npm start
+   ```
+
+## Screenshots
+
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+<img src="./public/assets/screenshots/1.png" width="370"/> 
+<img src="./public/assets/screenshots/2.png" width="370"/>
+<img src="./public/assets/screenshots/3.png" width="370"/>
+<img src="./public/assets/screenshots/4.png" width="370"/>
+<img src="./public/assets/screenshots/5.png" width="370"/>
+</div>
+
+## Resources
+
+Special thanks for providing resources such as icons and images.
+
+- [Flaticon](https://flaticon.com/)
+- [unDraw](https://undraw.co/)
+- [SVGRepo](https://svgrepo.com/)
+- and other sources.
+
+If there are resources that belong to you, please let me know, I will write it here.
+
+## Related Projects
+
+- [jokopi-express](https://github.com/nyannss/jokopi) - Rest API
+- [jokopi-react-native](https://github.com/nyannss/jokopi-react-native) - Android & iOS Application
+
+## License
+
+This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
+
+## Report Bug
+
+Any error report you can pull request
+or contact: <nyannss@proton.me>
