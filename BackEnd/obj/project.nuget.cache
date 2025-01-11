@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kauvoc38E2wHsB0roqa9hwQJ4XpBZ72tTThh1hbOCLdzCWw0cTkbxkdArbVMwg8Qy4xPE0tQjcMJUZTGpp9euw==",
+  "dgSpecHash": "sFQl3fxAW4Or3eR6ceWeRMnUU8yCSnOFgJwBkk8/GRF1lymNU/6Yz5gQoOtFH4zxf5MdPbpmyos2AMR4A++OXg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kiet\\Desktop\\ASP.NET-ReactJS\\BackEnd\\AccountApplication.csproj",
+  "projectFilePath": "C:\\Users\\Kiet\\Desktop\\ASP.NET-ReactJS\\backend\\AccountApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kiet\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Kiet\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
