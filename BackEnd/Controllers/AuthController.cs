@@ -32,7 +32,10 @@ public class AuthController : ControllerBase
             UserName = model.Email, 
             Email = model.Email,
             FirstName = model.FirstName,
-            LastName = model.LastName 
+            LastName = model.LastName,
+            PhoneNumber = model.PhoneNumber,
+            Address = model.Address,
+            Status = 1
         };
 
         var result = await _userManager.CreateAsync(user, model.Password);

@@ -17,5 +17,24 @@ namespace AccountApplication.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string LastName { get; set; }
+
+        //email
+        [PersonalData]
+        [Column(TypeName = "nvarchar(100)")]
+        public string Email { get; set; }
+
+        // status
+        [PersonalData]
+        public int Status { get; set; }
+
+        //phone number
+        [PersonalData]
+        [Column(TypeName = "nvarchar(100)")]
+        public string PhoneNumber { get; set; }
+
+        //address
+        [PersonalData]
+        [Column(TypeName = "nvarchar(100)")]
+        public string Address { get; set; }
     }
 }
