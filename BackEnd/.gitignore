@@ -13,6 +13,7 @@ obj/
 *.cache
 *.vspscc
 *.vssscc
+*.json
 .vs/
 
 # Runtime files
@@ -24,6 +25,8 @@ temp/
 .vscode/
 *.swp
 *.swo
+.idea/
+*.DotSettings.user
 
 # Dependencies
 packages/
@@ -40,3 +43,27 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+
+# Visual Studio files
+*.ncrunch*
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+*.pfx
+*.snk
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings
+
+# Testing
+TestResults/
+[Tt]est[Rr]esult*/
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nuget.props
+*.nuget.targets
