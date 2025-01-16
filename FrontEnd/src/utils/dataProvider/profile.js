@@ -1,7 +1,7 @@
 import api from "./base";
 
 export const getProfile = (token, controller) => {
-  return api.get("/apiv1/userPanel/profile", {
+  return api.get("/api/userPanel/profile", {
     headers: { Authorization: `Bearer ${token}` },
     signal: controller.signal,
   });
@@ -44,7 +44,7 @@ export const editProfile = (
   //   email,
   //   phone_number,
   // };
-  return api.patch("/apiv1/userPanel/profile", body, {
+  return api.patch("/api/userPanel/profile", body, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",

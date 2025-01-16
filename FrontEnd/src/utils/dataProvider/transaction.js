@@ -20,7 +20,7 @@ export const createTransaction = (
     address,
     notes,
   };
-  return api.post(`/apiv1/transactions`, body, {
+  return api.post(`/api/transactions`, body, {
     signal: controller.signal,
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -31,7 +31,7 @@ export const getTransactions = (
   token,
   controller
 ) => {
-  return api.get("/apiv1/transactions", {
+  return api.get("/api/transactions", {
     params: {
       status_id,
       page,
@@ -48,7 +48,7 @@ export const setTransactionDone = (ids = [], token, controller) => {
   }
   console.log(convertedIds);
   return api.patch(
-    "/apiv1/transactions/changeStatus",
+    "/api/transactions/changeStatus",
     {
       transactions: convertedIds,
     },
@@ -64,7 +64,7 @@ export const getTransactionHistory = (
   token,
   controller
 ) => {
-  return api.get("/apiv1/userPanel/transactions", {
+  return api.get("/api/userPanel/transactions", {
     params: {
       page,
       limit,
@@ -75,7 +75,7 @@ export const getTransactionHistory = (
 };
 
 export const getTransactionDetail = (transactionId, token, controller) => {
-  return api.get(`/apiv1/transactions/${transactionId}`, {
+  return api.get(`/api/transactions/${transactionId}`, {
     headers: { Authorization: `Bearer ${token}` },
     signal: controller.signal,
   });

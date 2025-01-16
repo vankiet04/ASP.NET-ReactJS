@@ -4,7 +4,7 @@ const host = process.env.REACT_APP_BACKEND_HOST;
 
 export function login(email, password, rememberMe, controller) {
   const body = { email, password, rememberMe };
-  const url = `${host}/apiv1/auth/login`;
+  const url = `${host}/api/auth/login`;
 
   return axios.post(url, body, {
     signal: controller.signal,
@@ -13,7 +13,7 @@ export function login(email, password, rememberMe, controller) {
 
 export function register(email, password, phone_number, controller) {
   const body = { email, password, phone_number };
-  const url = `${host}/apiv1/auth/register`;
+  const url = `${host}/api/auth/register`;
 
   return axios.post(url, body, {
     signal: controller.signal,
@@ -22,7 +22,7 @@ export function register(email, password, phone_number, controller) {
 
 export function forgotPass(email, controller) {
   const body = { email };
-  const url = `${host}/apiv1/auth/forgotPass`;
+  const url = `${host}/api/auth/forgotPass`;
 
   return axios.post(url, body, {
     signal: controller.signal,
@@ -30,7 +30,7 @@ export function forgotPass(email, controller) {
 }
 
 export function verifyResetPass(verify, code, controller) {
-  const url = `${host}/apiv1/auth/resetPass?verify=${verify}&code=${code}`;
+  const url = `${host}/api/auth/resetPass?verify=${verify}&code=${code}`;
 
   return axios.get(url, {
     signal: controller.signal,
@@ -38,7 +38,7 @@ export function verifyResetPass(verify, code, controller) {
 }
 
 export function resetPass(verify, code, password, controller) {
-  const url = `${host}/apiv1/auth/resetPass?verify=${verify}&code=${code}`;
+  const url = `${host}/api/auth/resetPass?verify=${verify}&code=${code}`;
 
   return axios.patch(
     url,
@@ -55,6 +55,6 @@ export function logoutUser(token) {
       Authorization: `Bearer ${token}`,
     },
   };
-  const url = `${host}/apiv1/auth/logout`;
+  const url = `${host}/api/auth/logout`;
   return axios.delete(url, config);
 }
