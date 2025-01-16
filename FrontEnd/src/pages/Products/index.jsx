@@ -59,6 +59,11 @@ function Products(props) {
     userInfo: state.userInfo,
   }));
 
+  const handlePayment = () => {
+    navigate('/payment');
+  }
+
+  
   const toggleDdmenu = () => {
     setDdmenu(!ddMenu);
   };
@@ -364,6 +369,14 @@ function Products(props) {
             </div>
           )}
         </section>
+        <div className="flex justify-center mt-4 mb-8">
+      <button 
+        onClick={handlePayment}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Proceed to Payment
+      </button>
+    </div>
       </main>
       <Footer />
     </>

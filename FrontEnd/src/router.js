@@ -18,6 +18,8 @@ import Products from "./pages/Products";
 import EditProduct from "./pages/Products/EditProduct";
 import NewProduct from "./pages/Products/NewProduct";
 import ProductDetail from "./pages/Products/ProductDetail";
+// import pay
+import Pay from "./components/Pay";
 import Profile from "./pages/Profile";
 import EditPromo from "./pages/Promo/EditPromo";
 import NewPromo from "./pages/Promo/NewPromo";
@@ -48,7 +50,7 @@ const Routers = () => {
             element={<ProductDetail />}
           />
           <Route path="cart" element={<Cart />} />
-
+          <Route path="payment" element={<Pay />} />
           {/* Route which must not logged in */}
           <Route
             path="auth"

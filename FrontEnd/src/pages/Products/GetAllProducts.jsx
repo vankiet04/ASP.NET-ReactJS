@@ -55,6 +55,8 @@ function GetAllProducts(props) {
         });
     }
 
+    
+
     // const controller = React.useMemo(() => new AbortController(), [catId]);
     const page = searchParams.get("page");
     if (searchParams.has("page") && (page < 1 || isNaN(page))) {
@@ -268,6 +270,7 @@ function GetAllProducts(props) {
             )}
           </div>
         </section>
+        
       </>
     );
   }
