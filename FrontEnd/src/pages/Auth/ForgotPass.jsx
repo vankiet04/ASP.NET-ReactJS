@@ -34,7 +34,7 @@ const ForgotPass = () => {
       e.target.disabled = true;
       toast.promise(
         forgotPass(email, controller).then((res) => {
-          // console.log(res.data.data.token);
+          // console.log(res.data.token);
           setResend(now() + 2 * 60 * 1000); // now + 2 minutes
           e.target.disabled = false;
           setIsLoading(false);

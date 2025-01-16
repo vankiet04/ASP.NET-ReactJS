@@ -47,17 +47,17 @@ const Login = () => {
         login(form.email, form.password, form.rememberMe, controller).then(
           (res) => {
             // console.log(res.data);
-            // console.log(res.data.data.token);
-            dispatch(uinfoAct.assignToken(res.data.data.token));
-            const { role } = jwtDecode(res.data.data.token);
+            // console.log(res.data.token);
+            dispatch(uinfoAct.assignToken(res.data.token));
+            const { role } = jwtDecode(res.data.token);
             dispatch(uinfoAct.assignData({ role }));
             dispatch(
               profileAction.getProfileThunk({
                 controller,
-                token: res.data.data.token,
+                token: res.data.token,
               })
             );
-            return res.data.data.token;
+            return res.data.token;
           }
         ),
         {
