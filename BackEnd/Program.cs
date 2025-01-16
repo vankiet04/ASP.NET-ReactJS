@@ -20,18 +20,7 @@ namespace AccountApplication
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            builder.Services.AddCors(options =>
-{
-     options.AddPolicy("AllowAll",
-        builder =>
-        {
-            builder
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-        });
-        });
+            
 
             builder.Services.AddControllers();
             builder.Services.AddRazorPages();
@@ -39,9 +28,8 @@ namespace AccountApplication
             builder.Services.AddDbContext<AuthDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("AuthDbContextConnection")));
 
-
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-            {
+            
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
@@ -72,11 +60,10 @@ namespace AccountApplication
             app.UseAuthorization();
             app.MapControllers();
             app.MapRazorPages();
-            app.UseCors("AllowAll");
 
             await app.RunAsync();
         }
-
+        
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
