@@ -779,3 +779,12 @@ C:\Users\Kiet\Desktop\ASP.NET-ReactJS\backend\obj\Debug\net7.0\refint\AccountApp
 C:\Users\Kiet\Desktop\ASP.NET-ReactJS\backend\obj\Debug\net7.0\AccountApplication.pdb
 C:\Users\Kiet\Desktop\ASP.NET-ReactJS\backend\obj\Debug\net7.0\AccountApplication.genruntimeconfig.cache
 C:\Users\Kiet\Desktop\ASP.NET-ReactJS\backend\obj\Debug\net7.0\ref\AccountApplication.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\APIMatic.Core.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\Microsoft.Json.Pointer.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\PayPalServerSDK.dll
+C:\Users\KIET\Desktop\ASP.NET-ReactJS\BackEnd\bin\Debug\net7.0\Polly.dll
