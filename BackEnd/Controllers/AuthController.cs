@@ -86,4 +86,43 @@ public class AuthController : ControllerBase
         }
         return Unauthorized();
     }
+
+    [HttpPost("google")]
+    public async Task<IActionResult> Google([FromBody] GoogleModel model)
+    {
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        if (user == null)
+        {
+            // user = new ApplicationUser 
+            // { 
+            //     UserName = model.Email, 
+            //     Email = model.Email,
+            //     FirstName = model.FirstName,
+            //     LastName = model.LastName,
+            //     PhoneNumber = model.PhoneNumber,
+            //     Address = model.Address,
+            //     Status = 1
+            // };
+
+            // var result = await _userManager.CreateAsync(user);
+            // if (!result.Succeeded)
+            // {
+            //     return BadRequest(new { errors = result.Errors });
+            // }
+            // console hehe
+            return BadRequest(new { message = "User not found" });
+        }
+
+        // var authClaims = new List<Claim>
+        // {
+        //     new Claim(ClaimTypes.Name, user.UserName),
+        //     new Claim(ClaimTypes.Email, user.Email),
+        //     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        // };
+
+        // var token = CreateToken(authClaims);
+
+        // return found with mesage found only 
+        return Ok(new { message = "User found" });
+    }
 }

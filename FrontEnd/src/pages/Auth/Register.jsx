@@ -31,10 +31,31 @@ const Register = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      const userCred = await signInWithPopup(auth, new GoogleAuthProvider());
+      const userCred = await signInWithGoogle();
       console.log(userCred);
-      // Handle successful login here
-      toast.success("Google login successful!");
+
+      const { email, displayName } = userCred.user;
+  
+      const response = await fetch('https://localhost:50001/api/Auth/google', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          name: displayName
+        })
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        toast.success(data.message);
+        navigate('/');
+      } else {
+        toast.error(data.message);
+      }
+  
     } catch (error) {
       console.error(error);
       toast.error("Failed to login with Google");
