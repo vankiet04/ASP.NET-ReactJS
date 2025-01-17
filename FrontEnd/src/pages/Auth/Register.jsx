@@ -6,6 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import icon from "../../assets/jokopi.svg";
 import { register } from "../../utils/dataProvider/auth";
 import useDocumentTitle from "../../utils/documentTitle";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import { signInWithGoogle, auth } from "./auth_google_signin_popup";
+
 
 const Register = () => {
   useDocumentTitle("Register");
@@ -24,6 +28,19 @@ const Register = () => {
     password: "",
     phoneNumber: "",
   });
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const userCred = await signInWithPopup(auth, new GoogleAuthProvider());
+      console.log(userCred);
+      // Handle successful login here
+      toast.success("Google login successful!");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to login with Google");
+    }
+  };
+  
 
   function registerHandler(e) {
     e.preventDefault(); // preventing default submit
@@ -244,6 +261,13 @@ const Register = () => {
             </button>
           </Link>
         </form>
+        <button 
+  className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+  onClick={handleGoogleSignIn}
+>
+
+  Continue with Google
+</button>
       </section>
     </>
   );
