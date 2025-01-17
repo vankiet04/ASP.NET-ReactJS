@@ -1,7 +1,7 @@
 import api from "./base";
 
 export const getMonthlyReport = (token, controller) => {
-  return api.get("/apiv1/adminPanel/monthlyReport", {
+  return api.get("/api/adminPanel/monthlyReport", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -10,7 +10,7 @@ export const getMonthlyReport = (token, controller) => {
 };
 
 export const getSellingReport = (view = "monthly", token, controller) => {
-  return api.get("/apiv1/adminPanel/reports", {
+  return api.get("/api/adminPanel/reports", {
     params: {
       view,
     },

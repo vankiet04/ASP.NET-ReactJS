@@ -10,13 +10,13 @@ export function getAllProducts(
   controller
 ) {
   const params = { orderBy, sort, searchByName, limit, page };
-  const url = `${host}/apiv1/products?category=${catId}`;
+  const url = `${host}/api/products?category=${catId}`;
 
   return axios.get(url, { params, signal: controller.signal });
 }
 
 export function getProductbyId(productId, controller) {
-  const url = `${host}/apiv1/products/${productId}`;
+  const url = `${host}/api/products/${productId}`;
 
   return axios.get(url, {
     signal: controller.signal,
@@ -43,7 +43,7 @@ export const createProductEntry = (
   //   image,
   // };
   // console.log(image);
-  return api.post("/apiv1/products", bodyForm, {
+  return api.post("/api/products", bodyForm, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",
@@ -72,7 +72,7 @@ export const editProductEntry = (
   //   desc,
   //   image,
   // };
-  return api.patch(`/apiv1/products/${productId}`, bodyForm, {
+  return api.patch(`/api/products/${productId}`, bodyForm, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",
@@ -82,7 +82,7 @@ export const editProductEntry = (
 };
 
 export const deleteProductEntry = (productId, token, controller) => {
-  return api.delete(`/apiv1/products/${productId}`, {
+  return api.delete(`/api/products/${productId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

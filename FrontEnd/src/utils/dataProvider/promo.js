@@ -25,7 +25,7 @@ export const createPromoEntry = (
   bodyForm.append("end_date", JSON.stringify(end_date));
 
   form.coupon_code = form.coupon_code.toUpperCase();
-  return api.post("/apiv1/promo", form, {
+  return api.post("/api/promo", form, {
     signal: controller.signal,
     headers: { Authorization: `Bearer ${token}` },
   });
@@ -41,7 +41,7 @@ export const getPromos = (
     available,
     searchByName,
   };
-  return api.get("/apiv1/promo", {
+  return api.get("/api/promo", {
     params,
     signal: controller.signal,
   });
@@ -72,18 +72,18 @@ export const editPromoEntry = (
   bodyForm.append("start_date", JSON.stringify(start_date));
   bodyForm.append("end_date", JSON.stringify(end_date));
 
-  return api.patch(`/apiv1/promo/${promoId}`, bodyForm, {
+  return api.patch(`/api/promo/${promoId}`, bodyForm, {
     signal: controller.signal,
     headers: { Authorization: `Bearer ${token}` },
   });
 };
 
 export const getPromoById = (promoId, controller) => {
-  return api.get(`/apiv1/promo/${promoId}`, { signal: controller.signal });
+  return api.get(`/api/promo/${promoId}`, { signal: controller.signal });
 };
 
 export const deletePromoEntry = (promoId, token, controller) => {
-  return api.delete(`/apiv1/promo/${promoId}`, {
+  return api.delete(`/api/promo/${promoId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

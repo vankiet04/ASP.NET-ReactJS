@@ -6,7 +6,7 @@ export function fetchProfile(token) {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  return axios.get(`${host}/apiv1/userPanel/profile`, config);
+  return axios.get(`${host}/api/userPanel/profile`, config);
 }
 
 export function addCart(product_id, cart, token) {
@@ -17,14 +17,14 @@ export function addCart(product_id, cart, token) {
     product_id,
     cart,
   };
-  return axios.patch(`${host}/apiv1/userPanel/cart`, data, config);
+  return axios.patch(`${host}/api/userPanel/cart`, data, config);
 }
 
 export function getCart(token) {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  return axios.get(`${host}/apiv1/userPanel/cart`, config);
+  return axios.get(`${host}/api/userPanel/cart`, config);
 }
 
 export function updatePassword(oldPassword, newPassword, token) {
@@ -35,12 +35,12 @@ export function updatePassword(oldPassword, newPassword, token) {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  return axios.patch(`${host}/apiv1/auth/editPassword`, body, config);
+  return axios.patch(`${host}/api/auth/editPassword`, body, config);
 }
 
 export function updateProfile(data, token) {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  return axios.patch(`${host}/apiv1/auth/editProfile`, data, config);
+  return axios.patch(`${host}/api/auth/editProfile`, data, config);
 }
