@@ -10,6 +10,8 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
+using BackEnd.dtos.Auth.Request;
+using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]")]
 [ApiController]
 public class AuthController : ControllerBase 
@@ -84,7 +86,8 @@ public class AuthController : ControllerBase
                 expiration = token.ValidTo
             });
         }
-        return Unauthorized();
+        // return not found with message not found
+        return NotFound(new { message = "Invalsid credentials" });
     }
 
     [HttpPost("google")]
