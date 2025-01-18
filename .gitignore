@@ -1,0 +1,71 @@
+# Config files
+BackEnd/appsettings.json
+BackEnd/appsettings.Development.json
+BackEnd/appsettings.*.json
+!appsettings.example.json
+
+# .NET Core
+BackEnd/bin/
+BackEnd/obj/
+*.dll
+*.pdb
+*.user
+*.suo
+*.cache
+*.vspscc
+*.vssscc
+*.json
+.vs/
+
+# Runtime files
+*.log
+logs/
+temp/
+
+# IDE
+.vscode/
+*.swp
+*.swo
+.idea/
+*.DotSettings.user
+
+# Dependencies
+FrontEnd/packages/
+FrontEnd/node_modules/
+
+# Build results
+BackEnd/Debug/
+BackEnd/Release/
+BackEnd/x64/
+BackEnd/x86/
+BackEnd/ARM/
+BackEnd/ARM64/
+BackEnd/bld/
+BackEnd/bin/
+BackEnd/obj/
+BackEnd/log/
+
+# Visual Studio files
+*.ncrunch*
+*.Publish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+*.pfx
+*.snk
+
+# ReSharper
+_ReSharper*/
+*.ReSharper
+*.DotSettings
+
+# Testing
+TestResults/
+TestResult*/
+*.coverage
+*.coveragexml
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+BackEnd/appsettings.json
