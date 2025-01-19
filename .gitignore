@@ -69,3 +69,5 @@ TestResult*/
 *.nuget.props
 *.nuget.targets
 BackEnd/appsettings.json
+FrontEnd/yarn.lock
+abc.txt
