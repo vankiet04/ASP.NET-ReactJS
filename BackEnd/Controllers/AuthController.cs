@@ -26,28 +26,37 @@ public class AuthController : ControllerBase
         _configuration = configuration;
     }
 
-    [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterDto model)
+   [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterDto model)
     {
-        var user = new ApplicationUser 
-        { 
-            UserName = model.Email, 
-            Email = model.Email,
-            FirstName = model.FirstName,
-            LastName = model.LastName,
-            PhoneNumber = model.PhoneNumber,
-            Address = model.Address,
-            Status = 1
-        };
-
-        var result = await _userManager.CreateAsync(user, model.Password);
-        
-        if (result.Succeeded)
+        if (ModelState.IsValid)
         {
-            return Ok(new { message = "Registration successful" });
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+            {
+                return BadRequest(new { success = false, message = "Email đã tồn tại" });
+            }
+            var user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address,
+                Status = 1
+            };
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                return Ok(new { success = true, message = "Đăng ký thành công" });
+            }
+
+            return BadRequest(new { success = false, message = "Đăng ký thất bại" });
         }
 
-        return BadRequest(new { errors = result.Errors });
+        return BadRequest(new { success = false, message = "Dữ liệu không hợp lệ" });
     }
 
     private JwtSecurityToken CreateToken(List<Claim> authClaims)

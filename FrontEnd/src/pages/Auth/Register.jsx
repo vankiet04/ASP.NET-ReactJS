@@ -10,7 +10,6 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 import { signInWithGoogle, auth } from "./auth_google_signin_popup";
 
-
 const Register = () => {
   useDocumentTitle("Register");
 
@@ -18,15 +17,21 @@ const Register = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [form, setForm] = React.useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     phoneNumber: "",
+    address: "",
   });
 
   const [error, setError] = React.useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     phoneNumber: "",
+    address: "",
   });
 
   const handleGoogleSignIn = async () => {
@@ -35,98 +40,117 @@ const Register = () => {
       console.log(userCred);
 
       const { email, displayName } = userCred.user;
-  
-      const response = await fetch('https://localhost:50001/api/Auth/google', {
-        method: 'POST',
+
+      const response = await fetch("https://localhost:50001/api/Auth/google", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: email,
-          name: displayName
-        })
+          name: displayName,
+        }),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         toast.success(data.message);
-        navigate('/');
+        navigate("/");
       } else {
         toast.error(data.message);
       }
-  
     } catch (error) {
       console.error(error);
       toast.error("Failed to login with Google");
     }
   };
-  
 
-  function registerHandler(e) {
-    e.preventDefault(); // preventing default submit
-    toast.dismiss(); // dismiss all toast notification
+  const registerHandler = async (e) => {
+    e.preventDefault();
 
-    const valid = { email: "", password: "", phoneNumber: "" };
-    const emailRegex =
-      /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g;
+    const valid = {
+      email: "",
+      password: "",
+      phoneNumber: "",
+      firstName: "",
+      lastName: "",
+      address: "",
+      confirmPassword: "",
+    };
+
+    //mat khau it nha 6 ki tu so hoac chu
     const passRegex = /^(?=.*[0-9])(?=.*[a-z]).{8,}$/g;
-    const phoneRegex =
-      /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g;
 
-    // email validation
-    if (!form.email) valid.email = "Input your email address";
-    else if (!form.email.match(emailRegex))
-      valid.email = "Invalid email address";
+    // const emailRegex =
+    //   /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g;
+    // const passRegex = /^(?=.*[0-9])(?=.*[a-z]).{8,}$/g;
+    // const phoneRegex =
+    //   /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/g;
 
-    // password validation
-    if (!form.password) valid.password = "Input your password";
-    else if (form.password.length < 8)
-      valid.password = "Password length minimum is 8";
-    else if (!form.password.match(passRegex))
-      valid.password = "Password must be combination alphanumeric";
+    // // Kiểm tra tính hợp lệ của email
+    // if (!form.email) valid.email = "Input your email address";
+    // else if (!form.email.match(emailRegex))
+    //   valid.email = "Invalid email address";
 
-    // phone validation
-    if (!form.phoneNumber) valid.phoneNumber = "Input your phone number";
-    else if (!form.phoneNumber.match(phoneRegex))
-      valid.phoneNumber = "Invalid phone number";
+    // // Kiểm tra tính hợp lệ của mật khẩu
+    // if (!form.password) valid.password = "Input your password";
+    // else if (form.password.length < 8)
+    //   valid.password = "Password length minimum is 8";
+    // else if (!form.password.match(passRegex))
+    //   valid.password = "Password must be combination alphanumeric";
+
+    // // Kiểm tra tính hợp lệ của số điện thoại
+    // if (!form.phoneNumber) valid.phoneNumber = "Input your phone number";
+    // else if (!form.phoneNumber.match(phoneRegex))
+    //   valid.phoneNumber = "Invalid phone number";
+
+    // // Kiểm tra tính hợp lệ của confirm password
+    // if (!form.confirmPassword) valid.confirmPassword = "Confirm your password";
+    // else if (form.confirmPassword !== form.password)
+    //   valid.confirmPassword = "Passwords do not match";
 
     setError({
+      firstName: valid.firstName,
+      lastName: valid.lastName,
       email: valid.email,
       password: valid.password,
       phoneNumber: valid.phoneNumber,
+      confirmPassword: valid.confirmPassword,
+      address: valid.address,
     });
 
-    if (valid.email == "" && valid.password == "" && valid.phoneNumber == "") {
+    if (
+      valid.firstName === "" &&
+      valid.lastName === "" &&
+      valid.email === "" &&
+      valid.password === "" &&
+      valid.phoneNumber === "" &&
+      valid.confirmPassword === "" &&
+      valid.address === ""
+    ) {
       setIsLoading(true);
       e.target.disabled = true;
-      toast.promise(
-        register(form.email, form.password, form.phoneNumber, controller).then(
-          (res) => {
-            e.target.disabled = false;
-            setIsLoading(false);
-            return res.data.msg;
-          }
-        ),
-        {
-          loading: "Please wait a moment",
-          success: () => {
-            navigate("/auth/login", {
-              replace: true,
-            });
-            return "Register successful! You can login now";
-          },
-          error: ({ response }) => {
-            setIsLoading(false);
-            e.target.disabled = false;
 
-            return response.data.msg;
-          },
-        },
-        { success: { duration: Infinity }, error: { duration: Infinity } }
-      );
+      try {
+        const response = await axios.post(
+          "https://localhost:5001/api/Auth/register",
+          form
+        );
+        if (response.data.success) {
+          toast.success("Đăng ký tài khoản thành công");
+          navigate("/auth/login", { replace: true });
+        }
+        e.target.disabled = false;
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        e.target.disabled = false;
+        toast.error("Đăng ký tài khoản thất bại");
+        console.error("Registration failed:", error);
+      }
     }
-  }
+  };
 
   function onChangeForm(e) {
     return setForm((form) => {
@@ -150,6 +174,54 @@ const Register = () => {
       </header>
       <section className="mt-16">
         <form className="space-y-4 md:space-y-4 relative">
+          <div>
+            <label
+              name="firstName"
+              htmlFor="firstName"
+              className="text-[#4F5665] font-bold"
+            >
+              First Name :
+            </label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              className={
+                `border-gray-400 border-2 rounded-2xl p-3 w-full mt-2` +
+                (error.firstName != "" ? " border-red-500" : "")
+              }
+              placeholder="Enter your first name"
+              value={form.firstName}
+              onChange={onChangeForm}
+            />
+            <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-4">
+              {error.firstName != "" ? error.firstName : ""}
+            </span>
+          </div>
+          <div>
+            <label
+              name="lastName"
+              htmlFor="lastName"
+              className="text-[#4F5665] font-bold"
+            >
+              Last Name :
+            </label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              className={
+                `border-gray-400 border-2 rounded-2xl p-3 w-full mt-2` +
+                (error.lastName != "" ? " border-red-500" : "")
+              }
+              placeholder="Enter your last name"
+              value={form.lastName}
+              onChange={onChangeForm}
+            />
+            <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-4">
+              {error.lastName != "" ? error.lastName : ""}
+            </span>
+          </div>
           <div>
             <label
               name="email"
@@ -200,6 +272,28 @@ const Register = () => {
           </div>
           <div>
             <label
+              name="confirmPassword"
+              htmlFor="confirmPassword"
+              className="text-[#4F5665] font-bold"
+            >
+              Confirm Password :
+            </label>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              className={`border-gray-400 border-2 rounded-2xl p-3 w-full mt-2`}
+              placeholder="Re-enter your password"
+              // value={form.confirmPassword}
+              // onChange={onChangeForm}
+            />
+            <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-4">
+              {error.confirmPassword != "" ? error.confirmPassword : ""}
+            </span>
+          </div>
+
+          <div>
+            <label
               name="phoneNumber"
               htmlFor="phoneNumber"
               className="text-[#4F5665] font-bold"
@@ -222,6 +316,31 @@ const Register = () => {
               {error.phoneNumber != "" ? error.phoneNumber : ""}
             </span>
           </div>
+          <div>
+            <label
+              name="address"
+              htmlFor="address"
+              className="text-[#4F5665] font-bold"
+            >
+              Address :
+            </label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              className={
+                `border-gray-400 border-2 rounded-2xl p-3 w-full mt-2` +
+                (error.address != "" ? " border-red-500" : "")
+              }
+              placeholder="Enter your address"
+              value={form.address}
+              onChange={onChangeForm}
+            />
+            <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1 h-4">
+              {error.address != "" ? error.address : ""}
+            </span>
+          </div>
+          <div></div>
           <button
             type="submit"
             className={
@@ -259,6 +378,7 @@ const Register = () => {
             Signup
           </button>
           <button
+            onClick={handleGoogleSignIn}
             type="submit"
             className="w-full text-tertiary bg-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-bold rounded-2xl text-lg p-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 shadow-xl inline-flex justify-center items-center"
           >
@@ -282,13 +402,12 @@ const Register = () => {
             </button>
           </Link>
         </form>
-        <button 
-  className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-  onClick={handleGoogleSignIn}
->
-
-  Continue with Google
-</button>
+        <button
+          className="w-full flex items-center justify-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+          onClick={handleGoogleSignIn}
+        >
+          Continue with Google
+        </button>
       </section>
     </>
   );
