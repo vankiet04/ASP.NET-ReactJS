@@ -49,7 +49,7 @@ function ResetPass() {
     return (
       <main className="h-[80vh] flex flex-col items-center justify-center">
         <img src={notfoundImage} alt="Not Found" className="w-72" />
-        <p>The link has expired</p>
+        <p>The link hassssssss expired</p>
       </main>
     );
   };
